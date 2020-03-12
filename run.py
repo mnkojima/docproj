@@ -1,9 +1,6 @@
 from python_webex.v1.Bot import Bot
 from python_webex import webhook
 from datetime import datetime
-#from version import *
-
-#version = 0
 
 
 bot = Bot()         # the program will automatically know the bot being referred to y the auth_token
@@ -12,7 +9,8 @@ bot = Bot()         # the program will automatically know the bot being referred
 # rememer that url we got from step 2, this is where we use it. In my case it was http://87a942a1.ngrok.io. 
 # We will be creating a webhook that will be listening when messages are sent
 bot.create_webhook(
-    name="quickstart_webhook", target_url="http://666c1e93.ngrok.io", resource="messages", event="created"
+    #name="quickstart_webhook", target_url="http://666c1e93.ngrok.io", resource="messages", event="created"
+	name="quickstart_webhook", target_url="https://codproj.herokuapp.com/", resource="messages", event="created"
 )
 
 # we create a function that responds when someone says hi
@@ -41,7 +39,6 @@ def greet_back(room_id=None):
 
 def default_response(room_id=None):
     return bot.send_message(room_id=room_id, text="Desculpe, não entendi")
-
 
 # make the webhook know the bot to be listening for, and we are done
 webhook.bot = bot
